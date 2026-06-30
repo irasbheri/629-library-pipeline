@@ -27,7 +27,7 @@ from data_processing.ingestion import load_csv, load_json, load_excel
 from data_processing.cleaning import (
     remove_duplicates,
     handle_missing_values,
-    # standardize_dates,
+    standardize_dates,
 )
 from data_processing.validation import validate_isbn
 
