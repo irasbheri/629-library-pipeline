@@ -95,23 +95,27 @@ def process_circulation_data():
     print_section_header("Processing Circulation Data")
 
     # Step 1: Load raw data
-    print("\n[1/4] Loading raw data...")
+    print("\n[1/5] Loading raw data...")
     df = load_csv("data/circulation_data.csv")
     print_dataframe_info(df, "Raw data")
 
     # Step 2: Remove duplicates
-    print("\n[2/4] Removing duplicates...")
+    print("\n[2/5] Removing duplicates...")
     df_clean = remove_duplicates(df, subset=["transaction_id"])
     rows_removed = len(df) - len(df_clean)
     print(f"  - Removed {rows_removed:,} duplicate rows")
 
     # Step 3: Handle missing values
-    print("\n[3/4] Handling missing values...")
+    print("\n[3/5] Handling missing values...")
     df_clean = handle_missing_values(df_clean, strategy="drop")
     print("  - Dropped rows with missing values")
 
-    # Step 4: Save cleaned data
-    print("\n[4/4] Saving cleaned data...")
+    # Step 4: Standardize dates
+    print("\n[4/5] Standardizing dates...")
+    df_clean = standardize_dates(df_clean, date_columns=['checkout_date', 'return_date'])
+    
+    # Step 5: Save cleaned data
+    print("\n[5/5] Saving cleaned data...")
     filepath = save_to_silver(df_clean, "circulation_clean.csv")
     print(f"  ✓ Saved to: {filepath}")
     print_dataframe_info(df_clean, "Cleaned data")
