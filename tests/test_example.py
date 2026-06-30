@@ -16,8 +16,22 @@ def sample_df():
     })
 
 
-def test_example(sample_df):
+def test_example_len(sample_df):
     """Example test - shows pytest working."""
     assert len(sample_df) == 3
+
+def test_example_id(sample_df):
+    """Example test - shows pytest working."""
     assert 'id' in sample_df.columns
+
+def test_example_name(sample_df):
+    """Example test - shows pytest working."""
+    assert 'name' in sample_df.columns
+
+def test_example_col_not_present(sample_df):
+    """Example test - shows pytest working."""
+    assert 'startDate' not in sample_df.columns
+
+def test_example_unique(sample_df):
+    """Example test - shows pytest working."""
     assert sample_df['id'].is_unique
