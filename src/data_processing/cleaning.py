@@ -15,8 +15,28 @@ logger = logging.getLogger(__name__)
 
 
 def remove_duplicates(df, subset=None):
-    """Remove duplicate rows from DataFrame."""
+    """Remove duplicate rows from DataFrame.
+
+    Args:
+        df (pd.DataFrame): Input DataFrame
+        subset (list, optional): Columns to consider for duplicates
+
+    Returns:
+        pd.DataFrame: DataFrame with duplicates removed
+
+    Example:
+        >>> df_clean = remove_duplicates(df, subset=['transaction_id'])
+    """
     df = df.copy()  # Work on a copy!
+
+    initial_rows = len(df)
+    df = df.drop_duplicates(subset=subset, keep='first')
+    removed = initial_rows - len(df)
+
+    if removed > 0:
+        print(f"######################## Removed {removed} duplicate rows")
+        logger.info(f"Removed {removed} duplicate rows")
+
     return df
 
 
