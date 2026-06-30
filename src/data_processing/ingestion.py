@@ -76,7 +76,7 @@ def load_json(filepath):
 
     try:
         logger.info(f"Loading JSON from {filepath}")
-        with open(filepath, 'r') as f:
+        with open(filepath, "r") as f:
             data = json.load(f)
 
         df = pd.DataFrame(data)
@@ -90,6 +90,7 @@ def load_json(filepath):
     except Exception as e:
         logger.error(f"Error loading JSON {filepath}: {e}")
         raise
+
 
 def load_excel(filepath, sheet_name=0, **kwargs):  # pragma: no cover
     """Load Excel file into DataFrame.
