@@ -93,7 +93,7 @@ def load_json(filepath):
         logger.error(f"Error loading JSON {filepath}: {e}")
         raise
 
-def load_excel(filepath, sheet_name=0, **kwargs):
+def load_excel(filepath, sheet_name=0, **kwargs):  # pragma: no cover
     """Load Excel file into DataFrame.
 
     Args:

@@ -6,8 +6,8 @@ All functions return new DataFrames without modifying the input.
 """
 
 # Uncomment when needed:
-# import pandas as pd
-# from typing import List, Optional
+import pandas as pd
+from typing import List, Optional
 
 import logging
 
@@ -58,7 +58,7 @@ def handle_missing_values(df, strategy='drop', fill_value=None, columns=None):
     df = df.copy()
 
     if columns:
-        target_cols = columns
+        target_cols = columns  
     else:
         target_cols = df.columns
 
