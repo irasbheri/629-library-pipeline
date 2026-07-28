@@ -14,7 +14,6 @@
 ## Architecture
 [TODO: Add architecture diagram]
 
-
 See [docs/architecture/](docs/architecture/) for details.
 
 ## Setup
